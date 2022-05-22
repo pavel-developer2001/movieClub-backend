@@ -1,4 +1,4 @@
-import { Length, IsOptional } from 'class-validator';
+import { Length } from 'class-validator';
 
 export class CreateMovieDto {
   @Length(3, 255)
@@ -16,7 +16,7 @@ export class CreateMovieDto {
   @Length(1)
   munites: number;
 
-  @Length(4)
+  @Length(1)
   country: string;
 
   @Length(1)
