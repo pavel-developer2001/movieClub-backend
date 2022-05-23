@@ -35,7 +35,7 @@ export class RatingService {
 
   findOne(id: number, userId: number) {
     return this.repository.findOne({
-      where: { movie: { _id:id }, user: { id: userId } },
+      where: { movie: { _id: id }, user: { _id: userId } },
     });
   }
 
@@ -54,7 +54,7 @@ export class RatingService {
         user: { _id: userId },
         movie: { _id: updateRatingDto.movieId },
       });
-      return await this.repository.findOne({ where: { id: findRating._id } });
+      return await this.repository.findOne({ where: { _id: findRating._id } });
     }
     return 'Вы не можете обновить рейтинг';
   }
