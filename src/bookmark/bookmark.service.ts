@@ -40,7 +40,10 @@ export class BookmarkService {
   }
 
   findOne(id: number) {
-    return this.repository.find({ where: { user: { _id: id } } });
+    return this.repository.find({
+      where: { user: { _id: id } },
+      relations: ['movie'],
+    });
   }
 
   async update(updateBookMarkDto: UpdateBookmarkDto, userId: number) {
