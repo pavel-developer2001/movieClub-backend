@@ -7,4 +7,6 @@ export class CreateEpisodeDto {
   episode?: string;
 
   movieId: string;
+
+  teamId?: number;
 }

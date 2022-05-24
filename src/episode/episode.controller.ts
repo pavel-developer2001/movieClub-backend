@@ -19,6 +19,7 @@ import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { User } from 'src/user/user.decorator';
+import { TeamEpisodeService } from 'src/team-episode/team-episode.service';
 
 @Controller('episode')
 export class EpisodeController {
@@ -26,6 +27,7 @@ export class EpisodeController {
     private readonly episodeService: EpisodeService,
     @Inject(forwardRef(() => CloudinaryService))
     private cloudinary: CloudinaryService,
+    private readonly teamEpisodeService: TeamEpisodeService,
   ) {}
 
   @UseGuards(JwtAuthGuard)
@@ -41,6 +43,13 @@ export class EpisodeController {
       userId,
     );
     await this.cloudinary.uploadEpisodeVideo(file, newEpisode._id);
+    if (createEpisodeDto.teamId) {
+      await this.teamEpisodeService.addEpisodeForTeam(
+        newEpisode._id,
+        Number(newEpisode.movieId),
+        createEpisodeDto.teamId,
+      );
+    }
     return this.episodeService.findOne(newEpisode._id);
   }
 

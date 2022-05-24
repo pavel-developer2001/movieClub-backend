@@ -11,6 +11,10 @@ import { EpisodeModule } from './episode/episode.module';
 import { CommentModule } from './comment/comment.module';
 import { RatingModule } from './rating/rating.module';
 import { BookmarkModule } from './bookmark/bookmark.module';
+import { TeamModule } from './team/team.module';
+import { TeamMemberModule } from './team-member/team-member.module';
+import { TeamInvitationModule } from './team-invitation/team-invitation.module';
+import { TeamEpisodeModule } from './team-episode/team-episode.module';
 
 @Module({
   imports: [
@@ -29,6 +33,10 @@ import { BookmarkModule } from './bookmark/bookmark.module';
     CommentModule,
     RatingModule,
     BookmarkModule,
+    TeamModule,
+    TeamMemberModule,
+    TeamInvitationModule,
+    TeamEpisodeModule,
   ],
   controllers: [],
   providers: [],
