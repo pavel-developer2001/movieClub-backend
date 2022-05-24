@@ -19,7 +19,7 @@ export class EpisodeService {
       const findEpisode = await this.repository.findOne({
         where: {
           user: { _id: userId },
-          movie: { _id: createEpisodeDto.movieId },
+          movie: { _id: Number(createEpisodeDto.movieId) },
           season: createEpisodeDto.season,
           episode: createEpisodeDto.episode,
         },
@@ -32,6 +32,7 @@ export class EpisodeService {
       }
       return this.repository.save({
         ...createEpisodeDto,
+        movie: { _id: Number(createEpisodeDto.movieId) },
         user: { _id: userId },
       });
     } catch (error) {

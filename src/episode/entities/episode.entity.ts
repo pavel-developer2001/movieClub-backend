@@ -14,13 +14,13 @@ export class EpisodeEntity {
   @PrimaryGeneratedColumn()
   _id: number;
 
-  @Column({ nullable: null })
+  @Column({ nullable: true })
   url?: string;
 
-  @Column({ nullable: null })
+  @Column({ nullable: true })
   season?: string;
 
-  @Column({ nullable: null })
+  @Column({ nullable: true })
   episode?: string;
 
   @ManyToOne(() => UserEntity, { eager: false })
