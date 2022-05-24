@@ -14,7 +14,7 @@ export class BookmarkService {
   async create(createBookMarkDto: CreateBookmarkDto, userId: number) {
     const candidate = await this.repository.findOne({
       where: {
-        manga: { id: createBookMarkDto.movieId },
+        movie: { _id: createBookMarkDto.movieId },
         user: { _id: userId },
       },
     });
