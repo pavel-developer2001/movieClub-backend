@@ -59,7 +59,7 @@ export class UserService {
   }
   async findById(id: number) {
     try {
-      const user = await this.repository.findOne(id);
+      const user = await this.repository.findOne({ where: { _id: id } });
       return user;
     } catch (error) {
       console.error(error);

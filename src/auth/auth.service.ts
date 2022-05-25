@@ -48,7 +48,7 @@ export class AuthService {
     if (!userData || !tokenFromDb) {
       throw new HttpException('Токен не найден 2!', HttpStatus.FORBIDDEN);
     }
-    const user = await this.usersService.findById(userData._id);
+    const user = await this.usersService.findById(userData.sub);
     const payload = { email: user.email, sub: user._id };
     const tokens = this.tokenService.generateTokens(payload);
 
