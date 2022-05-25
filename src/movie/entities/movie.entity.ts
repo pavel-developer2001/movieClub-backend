@@ -26,6 +26,9 @@ export class MovieEntity {
   description: string;
 
   @Column({ nullable: true })
+  status: string;
+
+  @Column({ nullable: true })
   cover: string;
 
   @Column()

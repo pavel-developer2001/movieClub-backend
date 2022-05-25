@@ -28,6 +28,7 @@ export class MovieService {
       movie.title = createMovieDto.title;
       movie.englishTitle = createMovieDto.englishTitle;
       movie.description = createMovieDto.description;
+      movie.status = createMovieDto.status;
       movie.year = createMovieDto.year;
       movie.munites = createMovieDto.munites;
       movie.age = createMovieDto.age;

@@ -10,6 +10,8 @@ export class CreateMovieDto {
   @Length(3, 1500)
   description: string;
 
+  status: string;
+
   @Length(4)
   year: number;
 
