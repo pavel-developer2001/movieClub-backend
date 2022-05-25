@@ -13,7 +13,11 @@ export class TeamMemberService {
 
   async getTeams(id: number) {
     try {
-      const teams = await this.repository.find({ where: { user: { id } } });
+      const teams = await this.repository.find({
+        where: { user: { _id: id } },
+        relations: ['team'],
+        order: { _id: 'DESC' },
+      });
       return teams;
     } catch (error) {
       console.log('EEEEEEEEERRRRRRRRROOOOOR', error);

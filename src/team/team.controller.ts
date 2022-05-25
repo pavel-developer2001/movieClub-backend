@@ -31,6 +31,14 @@ export class TeamController {
     private readonly teamMemberService: TeamMemberService,
     private readonly teamInvitationService: TeamInvitationService,
   ) {}
+  @Get('user/:id')
+  async getAllTeamForUser(@Param('id') id: number) {
+    try {
+      return await this.teamMemberService.getTeams(id);
+    } catch (error) {
+      console.error('IHDIHVDIHVIDI', error);
+    }
+  }
 
   @UseGuards(JwtAuthGuard)
   @Post()

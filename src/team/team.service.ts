@@ -26,13 +26,11 @@ export class TeamService {
         return null;
       }
       await this.repository.update(id, { teamCover });
-      return await this.repository.findOne({ where: { id } });
+      return await this.repository.findOne({ where: { _id: id } });
     } catch (error) {
       console.error('error', error);
     }
   }
-
-
 
   async findOne(id: number) {
     try {
@@ -52,6 +50,4 @@ export class TeamService {
       console.log(error);
     }
   }
-
-
 }
