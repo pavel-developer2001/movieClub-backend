@@ -21,7 +21,7 @@ export class CommentEntity {
   spoiler: boolean;
 
   @Column({ default: 0 })
-  countLikes: number;
+  count_likes: number;
 
   @Column({ nullable: true })
   parentId?: number;

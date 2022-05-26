@@ -30,6 +30,13 @@ export class CommentService {
       },
     });
   }
+  async old(id: number) {
+    return await this.repository.find({
+      where: {
+        movie: { _id: id },
+      },
+    });
+  }
 
   update(id: number, updateCommentDto: UpdateCommentDto) {
     return `This action updates a #${id} comment`;
@@ -37,5 +44,19 @@ export class CommentService {
 
   remove(id: number) {
     return `This action removes a #${id} comment`;
+  }
+
+  async popular(id: number) {
+    try {
+      const qb = this.repository
+        .createQueryBuilder()
+        .where({ movie: { _id: id } });
+
+      qb.orderBy('count_likes', 'DESC');
+      const [items, count] = await qb.getManyAndCount();
+      return { items, count };
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

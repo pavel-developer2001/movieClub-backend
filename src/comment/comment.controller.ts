@@ -40,4 +40,15 @@ export class CommentController {
   remove(@Param('id') id: string) {
     return this.commentService.remove(+id);
   }
+
+  @Get('/popular/:id')
+  getPopularComments(@Param('id') id: string){
+    return this.commentService.popular(+id)
+  }
+
+  @Get('/old/:id')
+  getOldComments(@Param('id') id: string){
+    return this.commentService.old(+id)
+  }
+
 }
