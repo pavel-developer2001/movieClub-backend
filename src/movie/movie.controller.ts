@@ -11,6 +11,7 @@ import {
   UseGuards,
   UseInterceptors,
   UploadedFile,
+  Query,
 } from '@nestjs/common';
 import { MovieService } from './movie.service';
 import { CreateMovieDto } from './dto/create-movie.dto';
@@ -19,6 +20,7 @@ import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { User } from 'src/user/user.decorator';
+import { SearchMovieDto } from './dto/search-movie.dto';
 
 @Controller('movie')
 export class MovieController {
@@ -44,6 +46,11 @@ export class MovieController {
   @Get()
   findAll() {
     return this.movieService.findAll();
+  }
+
+  @Get('/search')
+  searchMovies(@Query() dto:SearchMovieDto) {
+    return this.movieService.search(dto);
   }
 
   @Get(':id')

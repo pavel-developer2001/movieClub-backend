@@ -4,6 +4,7 @@ import { GenreService } from 'src/genre/genre.service';
 import { UserService } from 'src/user/user.service';
 import { getConnection, Repository } from 'typeorm';
 import { CreateMovieDto } from './dto/create-movie.dto';
+import { SearchMovieDto } from './dto/search-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
 import { MovieEntity } from './entities/movie.entity';
 
@@ -67,5 +68,26 @@ export class MovieService {
 
   remove(id: number) {
     return `This action removes a #${id} movie`;
+  }
+
+  async search(dto: SearchMovieDto) {
+    try {
+      console.log(dto.title);
+      const qb = this.repository.createQueryBuilder('movie');
+      qb.leftJoinAndSelect('movie.user', 'user');
+      if (dto.title) {
+        qb.andWhere('movie.title ILIKE :title', {
+          title: `%${dto.title.toLowerCase()}%`,
+        });
+      }
+      qb.setParameters({
+        title: `%${dto.title.toLowerCase()}%`,
+      });
+      const items = await qb.getMany();
+      console.log(items);
+      return items;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
