@@ -20,14 +20,14 @@ npm i
 yarn install
 ```
 
-- 2  Start application:
+- 2 You must create an env file and create environment variables. See the .env.example file for an example.
+
+- 3  Start application:
 
 ```bash
 npm run dev
 # or
 yarn dev
 ```
-
-- 3 You must create an env file and create environment variables. See the .env.example file for an example.
 
 The frontend [here](https://github.com/pavel-developer2001/movieClub-frontend)
