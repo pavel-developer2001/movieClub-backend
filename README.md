@@ -28,4 +28,6 @@ npm run dev
 yarn dev
 ```
 
-The frontend version of this project [here](https://github.com/pavel-developer2001/movieClub-frontend)
+- 3 You must create an env file and create environment variables. See the .env.example file for an example.
+
+The frontend [here](https://github.com/pavel-developer2001/movieClub-frontend)
